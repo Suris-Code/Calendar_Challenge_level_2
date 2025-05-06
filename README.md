@@ -26,7 +26,7 @@ El sistema actual implementa una aplicación de calendario con las siguientes ca
 
 ### Frontend
 - React con TypeScript
-- Librería de calendario Schedule-X con funcionalidad de arrastrar y soltar
+- Librería de calendario Schedule-X con funcionalidad de "Drag & Drop"
 - Vite para construcción y desarrollo
 - Tailwind CSS para estilos
 - Notificaciones toast para feedback al usuario
@@ -64,7 +64,7 @@ El sistema actual implementa una aplicación de calendario con las siguientes ca
 
 - **Edición de citas**:
   - Modificación de todos los campos de la cita
-  - Reprogramación mediante funcionalidad de arrastrar y soltar
+  - Reprogramación mediante funcionalidad de "Drag & Drop"
 
 - **Vistas de calendario**:
   - Vista mensual en formato de cuadrícula
