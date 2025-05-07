@@ -84,6 +84,7 @@ namespace Infrastructure
 
                 services.AddScoped<IUserClaimsPrincipalFactory<ApplicationUser>, AppClaimsPrincipalFactory>();
                 services.AddScoped<IUserActivityLogService, UserActivityLogService>();
+                services.AddScoped<IActivityLogService, ActivityLogService>();
                 services.AddScoped<IErrorLogService, ErrorLogService>();
 
                 services.AddMediatR(opt => opt.RegisterServicesFromAssembly(Assembly.GetExecutingAssembly()));

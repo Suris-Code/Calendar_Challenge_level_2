@@ -84,6 +84,34 @@ namespace Infrastructure.Persistence
                 }
                 #endregion   
             }
+
+            var privateUsername = "private@suriscode.com";
+
+            if (!userManager.Users.Any(x => x.UserName == privateUsername))
+            {
+                #region Add the private user
+
+                ApplicationUser privateUser = new ApplicationUser
+                {
+                    UserName = privateUsername,
+                    Email = privateUsername,
+                    FirstName = "Private",
+                    LastName = "ReactNet",
+                    EmailConfirmed = true,
+                    Enabled = YesNo.Yes,
+                    Created = DateTime.Now,
+                    CreatedBy = "setup",
+                    LastModified = DateTime.Now,
+                    LastModifiedBy = "setup",
+                };
+                var userResult = await userManager.CreateAsync(privateUser, "Private-2025");
+
+                if (userResult.Succeeded)
+                {
+                    await userManager.AddToRoleAsync(privateUser, Role.User.ToString());
+                }
+                #endregion   
+            }
         }
 
         public static async Task SeedRandomAppointmentsAsync(ApplicationDbContext context, UserManager<ApplicationUser> userManager)

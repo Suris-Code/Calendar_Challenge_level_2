@@ -105,3 +105,7 @@ El sistema actual implementa una aplicación de calendario con las siguientes ca
 
 4. Acceder a la aplicación en `http://localhost:5173` (o el puerto especificado en tu entorno)
 
+## Credenciales de Acceso
+Para acceder a la aplicación, utilizar las siguientes credenciales:
+- **Usuario**: candidato@suriscode.com
+- **Contraseña**: Suris-challenge-2025
