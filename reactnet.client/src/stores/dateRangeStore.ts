@@ -1,5 +1,4 @@
 import { create } from 'zustand';
-import { persist } from 'zustand/middleware';
 
 export interface DateRange {
   startDate: Date | null;
@@ -7,18 +6,16 @@ export interface DateRange {
   weekStart: Date | null;
 }
 
-// Función para obtener el inicio de la semana actual (lunes)
 const getCurrentWeekStart = (): Date => {
   const now = new Date();
-  const dayOfWeek = now.getDay(); // 0 = domingo, 1 = lunes, etc.
-  const diff = dayOfWeek === 0 ? 6 : dayOfWeek - 1; // Ajustar para que la semana comience el lunes
+  const dayOfWeek = now.getDay();
+  const diff = dayOfWeek === 0 ? 6 : dayOfWeek - 1;
   const monday = new Date(now);
   monday.setDate(now.getDate() - diff);
   monday.setHours(0, 0, 0, 0);
   return monday;
 };
 
-// Función para obtener el fin de la semana actual (domingo)
 const getCurrentWeekEnd = (): Date => {
   const weekStart = getCurrentWeekStart();
   const sunday = new Date(weekStart);
@@ -36,38 +33,31 @@ interface DateRangeState {
   resetDateRange: () => void;
 }
 
-export const useDateRangeStore = create<DateRangeState>()(
-  persist(
-    (set) => ({
-      dateRange: {
-        startDate: getCurrentWeekStart(),
-        endDate: getCurrentWeekEnd(),
-        weekStart: getCurrentWeekStart(),
-      },
-      setDateRange: (dateRange: DateRange) => set({ dateRange }),
-      setStartDate: (startDate: Date | null) => 
-        set((state) => ({ 
-          dateRange: { ...state.dateRange, startDate } 
-        })),
-      setEndDate: (endDate: Date | null) => 
-        set((state) => ({ 
-          dateRange: { ...state.dateRange, endDate } 
-        })),
-      setWeekStart: (weekStart: Date | null) => 
-        set((state) => ({ 
-          dateRange: { ...state.dateRange, weekStart } 
-        })),
-      resetDateRange: () => 
-        set({ 
-          dateRange: { 
-            startDate: getCurrentWeekStart(), 
-            endDate: getCurrentWeekEnd(), 
-            weekStart: getCurrentWeekStart() 
-          } 
-        }),
+export const useDateRangeStore = create<DateRangeState>()((set) => ({
+  dateRange: {
+    startDate: getCurrentWeekStart(),
+    endDate: getCurrentWeekEnd(),
+    weekStart: getCurrentWeekStart(),
+  },
+  setDateRange: (dateRange: DateRange) => set({ dateRange }),
+  setStartDate: (startDate: Date | null) => 
+    set((state) => ({ 
+      dateRange: { ...state.dateRange, startDate } 
+    })),
+  setEndDate: (endDate: Date | null) => 
+    set((state) => ({ 
+      dateRange: { ...state.dateRange, endDate } 
+    })),
+  setWeekStart: (weekStart: Date | null) => 
+    set((state) => ({ 
+      dateRange: { ...state.dateRange, weekStart } 
+    })),
+  resetDateRange: () => 
+    set({ 
+      dateRange: { 
+        startDate: getCurrentWeekStart(), 
+        endDate: getCurrentWeekEnd(), 
+        weekStart: getCurrentWeekStart() 
+      } 
     }),
-    {
-      name: 'date-range-storage',
-    }
-  )
-); 
+})); 
