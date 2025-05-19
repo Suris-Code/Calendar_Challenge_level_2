@@ -6,7 +6,7 @@ Este proyecto es una aplicación de gestión de calendario full-stack que permit
 ## Descripción del Sistema
 El sistema actual implementa una aplicación de calendario con las siguientes características:
 
-1. **Autenticación de Usuarios**: Los usuarios pueden registrarse e iniciar sesión para acceder a su calendario personal.
+1. **Autenticación de Usuarios**: Los usuarios pueden iniciar sesión para acceder a su calendario personal.
 2. **Gestión de Citas**: 
    - Crear citas con título, descripción, hora de inicio, hora de finalización y ubicación
    - Ver citas en formato de calendario (vistas de día, semana y mes)
