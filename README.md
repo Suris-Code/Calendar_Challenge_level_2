@@ -46,7 +46,6 @@ El sistema actual implementa una aplicación de calendario con las siguientes ca
 ## Requisitos funcionales
 
 ### Gestión de Usuarios
-- Registro de nuevos usuarios con información básica
 - Inicio y cierre de sesión de usuarios
 
 ### Gestión de Citas
