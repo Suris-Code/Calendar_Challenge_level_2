@@ -1,110 +1,126 @@
-# Desafío de Aplicación de Gestión de Calendario
+# 📅 Proyecto de Calendario - Entrega Urgente al Cliente
 
-## Descripción General
-Este proyecto es una aplicación de gestión de calendario full-stack que permite a los usuarios crear, actualizar y eliminar citas. La aplicación cuenta con un frontend moderno en React y un backend en .NET utilizando un enfoque de arquitectura limpia.
+## 🎬 La Situación
+¡Bienvenido al equipo! Te acabas de incorporar a la empresa y **tienes una misión crítica**: el equipo de desarrollo anterior trabajó durante meses en una aplicación de gestión de calendario para un cliente importante, pero tuvieron que abandonar el proyecto por circunstancias imprevistas.
 
-## Descripción del Sistema
-El sistema actual implementa una aplicación de calendario con las siguientes características:
+**El cliente está esperando la entrega final** y confía en que podamos completar el trabajo. La buena noticia es que el sistema está **casi terminado** - la mala noticia es que puede tener algunos problemas y funcionalidades incompletas que necesitas identificar y resolver **antes de la entrega**.
 
-1. **Autenticación de Usuarios**: Los usuarios pueden iniciar sesión para acceder a su calendario personal.
-2. **Gestión de Citas**: 
-   - Crear citas con título, descripción, hora de inicio, hora de finalización y ubicación
-   - Ver citas en formato de calendario (vistas de día, semana y mes)
-   - Editar detalles de las citas
-   - Eliminar citas
-   - Arrastrar y soltar citas para reprogramarlas
-3. **Vistas de Calendario**: 
-   - Vista de cuadrícula mensual
-   - Vista semanal 
-   - Vista diaria
-4. **Experiencia de Usuario**:
-   - Diseño responsivo que funciona en diferentes dispositivos
-   - Notificaciones toast para acciones del usuario
-   - Diálogos modales para crear/editar citas
+## 🎯 Tu Misión
+Como el nuevo desarrollador a cargo, debes:
+1. **Heredar el código existente** y entender qué construyó el equipo anterior
+2. **Identificar qué está funcionando y qué no** en el sistema actual
+3. **Completar las funcionalidades faltantes** y corregir cualquier error
+4. **Entregar un producto funcional** que cumpla con todos los requisitos del cliente
 
-## Stack Tecnológico
+## 📋 Requisitos del Cliente (Lo que Esperan Recibir)
 
-### Frontend
-- React con TypeScript
-- Librería de calendario Schedule-X con funcionalidad de "Drag & Drop"
-- Vite para construcción y desarrollo
-- Tailwind CSS para estilos
-- Notificaciones toast para feedback al usuario
-- Zustand para el manejo de estados
+### 🗓️ Sistema de Gestión de Citas Completo
+El cliente necesita una aplicación donde sus usuarios puedan:
 
-### Backend
-- ASP.NET Core Web API
-- Patrón de Arquitectura Limpia con:
-  - Capa de Dominio (entidades, enumeraciones, interfaces)
-  - Capa de Aplicación (CQRS con MediatR)
-  - Capa de Infraestructura (implementaciones)
-  - Capa de Web API (controladores, servicios)
-- Entity Framework Core para acceso a datos
-- Autenticación JWT
-- Funcionalidad de registro de actividad
+#### Crear y Gestionar Citas
+- **Título**: Campo obligatorio (máximo 200 caracteres)
+- **Descripción**: Campo obligatorio (máximo 2000 caracteres)  
+- **Fecha y hora de inicio**: Campo obligatorio
+- **Fecha y hora de finalización**: Campo obligatorio
+- **Ubicación**: Campo opcional (máximo 500 caracteres)
 
-## Requisitos funcionales
+#### Visualizar el Calendario
+- **Vista Mensual**: Cuadrícula con todas las citas del mes
+- **Vista Semanal**: Distribución por días con franjas horarias
+- **Vista Diaria**: Detalle completo de las citas del día
+- **Navegación**: Moverse fácilmente entre diferentes períodos
 
-### Gestión de Usuarios
-- Inicio y cierre de sesión de usuarios
+#### Funcionalidades Avanzadas
+- Editar cualquier cita existente
+- Eliminar citas con confirmación
+- **Drag & Drop de citas** para reprogramarlas visualmente
 
-### Gestión de Citas
-- **Creación de citas** con:
-  - Título (obligatorio, máximo 200 caracteres)
-  - Descripción (obligatorio, máximo 2000 caracteres)
-  - Hora de inicio y fin (obligatorios)
-  - Ubicación (opcional, máximo 500 caracteres)
+#### Dashboard y Estadísticas
+- **Panel de Control**: Vista general con métricas importantes del período seleccionado
+- **Estadísticas Dinámicas**: 
+  - Total de eventos en el período
+  - Día con más eventos programados
+  - Día con más horas acumuladas
+  - Día con mayor ocupación porcentual
+- **Selector de Rango de Fechas**: Filtrar estadísticas por período personalizado
+- **Indicadores Visuales**: Cards informativos con iconos y descripciones claras
 
-- **Validaciones de citas**:
-  - Máximo 5 eventos por día por usuario
-  - Máximo 6 horas de eventos acumulados por día
-  - No puede haber superposición horaria con otros eventos del mismo usuario
-  - Validación de fechas y formatos de campos obligatorios
+### ⚠️ Reglas de Negocio Críticas (No Negociables)
+El cliente fue **muy específico** con estas restricciones que DEBEN funcionar:
 
-- **Edición de citas**:
-  - Modificación de todos los campos de la cita
-  - Reprogramación mediante funcionalidad de "Drag & Drop"
+1. **Máximo 5 citas por día** por usuario
+2. **Máximo 6 horas acumuladas** de eventos por día
+3. **Sin superposición de horarios** entre citas
+4. **Validación de fechas**: La hora de fin debe ser posterior a la de inicio
 
-- **Vistas de calendario**:
-  - Vista mensual en formato de cuadrícula
-  - Vista semanal con horas del día
-  - Vista diaria detallada
-  - Navegación entre diferentes períodos de tiempo
+### 🔐 Seguridad y Acceso
+- Cada usuario solo puede ver y gestionar sus propias citas
+- Sistema de autenticación seguro
 
-### Usabilidad
-- Interfaz responsiva adaptable a dispositivos móviles y escritorio
-- Notificaciones toast para informar sobre el resultado de las operaciones
-- Modales para creación y edición de citas
-- Interacciones intuitivas con elementos del calendario
+## 🛠️ Lo que Dejó el Equipo Anterior
 
-### Seguridad y Auditoría
-- Registro de actividad en el sistema
-- Almacenamiento de información de auditoría (creación y modificación)
-- Acceso restringido a las citas (solo propietario o administrador)
-- Validación de permisos para modificar o eliminar citas
+### Frontend (React + TypeScript)
+- Configuración con **Vite** para desarrollo rápido
+- **Schedule-X** como librería de calendario con drag & drop
+- **Tailwind CSS** para estilos modernos
+- **Zustand** para manejo de estado
+- Sistema de **notificaciones toast**
 
-## Criterios de Evaluación
-- Calidad y organización del código
-- Implementación adecuada de las características solicitadas
-- Experiencia de usuario y diseño de interfaz
-- Optimizaciones de rendimiento
-- Pruebas unitarias y de integración
+### Backend (.NET Core)
+- **Clean Architecture** con separación de capas
+- **CQRS con MediatR** para comandos y consultas
+- **Entity Framework Core** para base de datos
+- **Autenticación con Cookies**
+- Sistema de **auditoría y logging**
 
-## Primeros Pasos
-1. Clonar el repositorio
-2. Configurar el backend:
-   - Navegar al directorio raíz del proyecto
-   - Construir la solución con `dotnet build`
-   - Ejecutar el backend con `dotnet run --project ReactNet.Server`
-   
-3. Configurar el frontend:
-   - Navegar al directorio `reactnet.client`
-   - Instalar dependencias con `npm install`
-   - Ejecutar el frontend con `npm run dev`
+### Estructura del Proyecto
+```
+/
+├── ReactNet.Server/          # Backend API (.NET)
+│   ├── Domain/              # Entidades y reglas de negocio
+│   ├── Application/         # Casos de uso y CQRS
+│   ├── Infrastructure/      # Acceso a datos y servicios externos
+│   └── WebAPI/             # Controladores y configuración
+└── reactnet.client/        # Frontend React
+    ├── src/
+    │   ├── components/     # Componentes reutilizables
+    │   ├── pages/         # Páginas principales
+    │   ├── services/      # Llamadas a API
+    │   └── stores/        # Manejo de estado
+    └── public/
+```
 
-4. Acceder a la aplicación en `http://localhost:5173` (o el puerto especificado en tu entorno)
+## 🚀 Cómo Empezar tu Investigación
 
-## Credenciales de Acceso
-Para acceder a la aplicación, utilizar las siguientes credenciales:
+### Configurar el Entorno
+```bash
+# Backend - desde la raíz del proyecto
+dotnet build
+dotnet run --project ReactNet.Server
+# Disponible en: https://localhost:7154
+
+# Frontend - en otra terminal
+cd reactnet.client
+npm install
+npm run dev
+# Disponible en: http://localhost:5173
+```
+
+### Credenciales de Prueba
 - **Usuario**: candidato@suriscode.com
 - **Contraseña**: Suris-challenge-2025
+
+## 💡 Consejos del Mentor
+
+1. **No te apresures** - Dedica tiempo a entender antes de cambiar
+2. **Respeta el trabajo anterior** - El equipo tenía buenas razones para sus decisiones
+3. **Prueba constantemente** - Cada cambio debe acercarte a los requisitos del cliente
+4. **Piensa en el usuario final** - El cliente evaluará la experiencia completa
+5. **Documenta tu proceso** - Será valioso para futuras entregas
+
+## 🆘 Soporte de Emergencia
+Si encuentras bloqueadores críticos o tienes dudas sobre los requisitos del cliente, contacta inmediatamente al equipo de evaluación.
+
+---
+**El cliente confía en ti. ¡Es hora de brillar! 🌟**
+
