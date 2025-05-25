@@ -32,7 +32,7 @@ public class AppointmentsController(ILogger<AppointmentsController> logger, ISen
         return Ok(response);
     }
 
-    [AuthorizePolicies(Policy.AppointmentOwner)]
+    [AuthorizePolicies(Policy.LoggedIn)]
     [HttpPost]
     public async Task<ActionResult<CreateAppointmentResponse>> CreateAppointment([FromBody] CreateAppointmentRequest request, CancellationToken cancellationToken)
     {
@@ -41,7 +41,7 @@ public class AppointmentsController(ILogger<AppointmentsController> logger, ISen
         return CreatedAtAction(nameof(GetAppointment), new { id = response.Id }, response);
     }
 
-    [AuthorizePolicies(Policy.AppointmentOwner)]
+    [AuthorizePolicies(Policy.LoggedIn)]
     [HttpPut("{id:int}")]
     public async Task<ActionResult<UpdateAppointmentResponse>> UpdateAppointment(int id, [FromBody] UpdateAppointmentRequest request, CancellationToken cancellationToken)
     {
