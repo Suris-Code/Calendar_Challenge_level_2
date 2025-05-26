@@ -67,8 +67,8 @@ namespace Application.Features.Appointments.Commands
                 };
             }
             
-            // Validation 3: No time overlap with existing appointments
-            bool hasOverlap = userAppointmentsOnSameDay.Any(a => 
+            // Validation 3: No time overlap with existing appointments, TODO: Validate if this is working
+/*             bool hasOverlap = userAppointmentsOnSameDay.Any(a => 
                 (command.Request.StartTime >= a.StartTime && command.Request.StartTime < a.EndTime) || // New appointment starts during existing appointment
                 (command.Request.EndTime > a.StartTime && command.Request.EndTime <= a.EndTime) || // New appointment ends during existing appointment
                 (command.Request.StartTime <= a.StartTime && command.Request.EndTime >= a.EndTime)); // New appointment completely encompasses existing appointment
@@ -80,7 +80,7 @@ namespace Application.Features.Appointments.Commands
                     Id = 0,
                     Result = Result.Failure("No puede haber superposición horaria con otros eventos.")
                 };
-            }
+            } */
 
             var appointment = new Appointment
             {
